@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+	<h:head>
+		<f:facet name="first">
+			<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+			<title>PrimeFaces</title>
+		</f:facet>
+	</h:head>
+
+	<h:body>
+		<p:layout fullPage="true">
+
+			<p:layoutUnit position="north" size="100" resizable="true"
+				closable="true" collapsible="true">
+                    Header
+                </p:layoutUnit>
+
+			<p:layoutUnit position="south" size="100" closable="true"
+				collapsible="true">
+                    Footer
+                </p:layoutUnit>
+
+			<p:layoutUnit position="west" size="175" header="Left"
+				collapsible="true">
+
+			</p:layoutUnit>
+			
+			<p:layoutUnit position="east" size="175" header="Right"
+				collapsible="true">
+
+			</p:layoutUnit>
+
+			<p:layoutUnit position="center">
+				<h:form>
+					<p:dataTable var="incident" value="#{incidentView.incidents}" rows="10" paginator="true" widgetVar="incidentTable"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15">
+						<f:facet name="header">
+				             Incidentes
+				       </f:facet>
+						
+						<p:column headerText="SioId">
+							<h:outputText value="#{incident.sioId}" />
+						</p:column>
+						<p:column headerText="Tipo Reporte" filterBy="#{incident.reportType}" filterMatchMode="exact">
+							<f:facet name="filter">
+								<p:selectOneMenu onchange="PF('incidentTable').filter()">
+									<f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" />
+									<f:selectItem itemLabel="reportType0" itemValue="reportType0"/>
+									<f:selectItem itemLabel="reportType1" itemValue="reportType1"/>
+									<f:selectItem itemLabel="reportType2" itemValue="reportType2"/>
+									<f:selectItem itemLabel="reportType3" itemValue="reportType3"/>
+									<f:selectItem itemLabel="reportType4" itemValue="reportType4"/>
+								</p:selectOneMenu>
+							</f:facet>
+							<h:outputText value="#{incident.reportType}" />
+						</p:column>
+						<p:column headerText="Creación" sortBy="#{incident.createdDate}">
+							<h:outputText value="#{incident.createdDate}" converter="javax.faces.DateTime"/>
+						</p:column>
+						<p:column headerText="Clase" filterBy="#{incident.clazz}" filterMatchMode="exact">
+							<f:facet name="filter">
+								<p:selectOneMenu onchange="PF('incidentTable').filter()">
+									<f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" />
+									<f:selectItem itemLabel="clazz0" itemValue="clazz0"/>
+									<f:selectItem itemLabel="clazz1" itemValue="clazz1"/>
+									<f:selectItem itemLabel="clazz2" itemValue="clazz2"/>
+									<f:selectItem itemLabel="clazz3" itemValue="clazz3"/>
+									<f:selectItem itemLabel="clazz4" itemValue="clazz4"/>
+								</p:selectOneMenu>
+							</f:facet>
+							
+							<h:outputText value="#{incident.clazz}" />
+						</p:column>	
+						<p:column headerText="Progreso" sortBy="#{incident.progress}">
+							<h:outputText value="#{incident.progress}" />
+						</p:column>	
+						<p:column headerText="Cierre" sortBy="#{incident.closedDate}">
+							<h:outputText value="#{incident.closedDate}" converter="javax.faces.DateTime"/>
+						</p:column>
+					</p:dataTable>
+				</h:form>
+			</p:layoutUnit>
+		</p:layout>
+	</h:body>
+</f:view>
+</html>
+

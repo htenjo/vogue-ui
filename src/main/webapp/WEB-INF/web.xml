@@ -8,6 +8,10 @@
        <param-name>primefaces.THEME</param-name>
        <param-value>bootstrap</param-value>
 	</context-param>
+	<context-param>
+	   <param-name>primefaces.FONT_AWESOME</param-name>
+	   <param-value>true</param-value>
+	</context-param>
 
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
@@ -19,9 +23,7 @@
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>

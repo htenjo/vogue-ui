@@ -14,33 +14,40 @@
 	</h:head>
 
 	<h:body>
+		<h:outputStylesheet name="css/default.css" />
 		<p:layout fullPage="true">
+			<p:layoutUnit position="north" size="70" style="border: none">
+                Header
+			</p:layoutUnit>
 
-			<p:layoutUnit position="north" size="100" resizable="true"
-				closable="true" collapsible="true">
-                    Header
-                </p:layoutUnit>
-
-			<p:layoutUnit position="south" size="100" closable="true"
-				collapsible="true">
+			<p:layoutUnit position="south" size="50" style="border: none">
                     Footer
-                </p:layoutUnit>
-
-			<p:layoutUnit position="west" size="175" header="Left"
-				collapsible="true">
-
-			</p:layoutUnit>
-			
-			<p:layoutUnit position="east" size="175" header="Right"
-				collapsible="true">
-
 			</p:layoutUnit>
 
-			<p:layoutUnit position="center">
+			<p:layoutUnit position="center" style="border: none">
 				<h:form>
-					<p:dataTable var="incident" value="#{incidentView.incidents}" rows="10" paginator="true" widgetVar="incidentTable"
+					<p:tabMenu activeIndex="#{param.i}" style="width:80%">
+					    <p:menuitem value="Overview" icon="ui-icon-star">
+					        <f:param name="i" value="0" />
+					    </p:menuitem>
+					    <p:menuitem value="Demos" icon="ui-icon-search">
+					        <f:param name="i" value="1" />
+					    </p:menuitem>
+					    <p:menuitem value="Documentation" icon="ui-icon-document">
+					        <f:param name="i" value="2" />
+					    </p:menuitem>
+					    <p:menuitem value="Support" icon="ui-icon-wrench">
+					        <f:param name="i" value="3" />
+					    </p:menuitem>
+					    <p:menuitem value="Social" icon="ui-icon-person">
+					        <f:param name="i" value="4" />
+					    </p:menuitem>
+					</p:tabMenu>
+				</h:form>
+				<h:form>
+					<p:dataTable var="incident" value="#{incidentView.incidents}" rows="10" paginator="true" widgetVar="incidentTable" paginatorPosition="bottom"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="5,10,15">
+						rowsPerPageTemplate="5,10,15" style="width:80%">
 						<f:facet name="header">
 				             Incidentes
 				       </f:facet>
@@ -83,6 +90,10 @@
 						</p:column>	
 						<p:column headerText="Cierre" sortBy="#{incident.closedDate}">
 							<h:outputText value="#{incident.closedDate}" converter="javax.faces.DateTime"/>
+						</p:column>
+						<p:column headerText="Acciones">
+							<p:commandButton icon="fa fa-fw fa-edit" type="button"/>
+							<p:commandButton icon="fa fa-fw fa-remove" type="button"/>
 						</p:column>
 					</p:dataTable>
 				</h:form>

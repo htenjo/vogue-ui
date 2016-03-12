@@ -1,0 +1,6 @@
+.ui-widget {
+    font-size: 75%;
+ }
+.ui-widget .ui-widget {
+    font-size: 100%;
+ }

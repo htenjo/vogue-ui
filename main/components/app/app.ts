@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { IncidentComponent } from './incident-list/incident-list.cmp';
+import { IncidentListComponent } from '../incident/incident-list';
 
 @Component({
   selector: "vogue-app",
-  templateUrl: "app.cmp.html",
-  styleUrls: ["app.cmp.css"],
-  directives: [IncidentComponent],
+  templateUrl: "app.html",
+  styleUrls: ["app.css"],
+  directives: [IncidentListComponent],
   moduleId: module.id
 })
 

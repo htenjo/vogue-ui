@@ -1,0 +1,30 @@
+<div *ngIf="incident">
+    <div>
+        <label>SIO</label>
+        <input [(ngModel)]="incident.sio" placeholder="SIO"/>
+    </div>
+    <div>
+        <label>Creación</label>
+        <input [(ngModel)]="incident.creationDate" placeholder="Creación"/>
+    </div>
+    <div>
+        <label>Tipo</label>
+        <input [(ngModel)]="incident.type" placeholder="Tipo"/>
+    </div>
+    <div>
+        <label>Criticidad</label>
+        <input [(ngModel)]="incident.criticity" placeholder="Criticidad"/>
+    </div>
+    <div>
+        <label>Severidad</label>
+        <input [(ngModel)]="incident.severity" placeholder="Severidad"/>
+    </div>
+    <div>
+        <label>Probabilidad</label>
+        <input [(ngModel)]="incident.probability" placeholder="Probabilidad"/>
+    </div>
+    <div>
+        <label>% Completado</label>
+        <input [(ngModel)]="incident.completed" placeholder="% Completado"/>
+    </div>
+</div>

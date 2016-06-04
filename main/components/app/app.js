@@ -9,25 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var IncidentComponent = (function () {
-    function IncidentComponent() {
+var incident_list_1 = require('../incident/incident-list');
+var AppComponent = (function () {
+    function AppComponent() {
+        this.title = "Vogue Incidents";
     }
-    IncidentComponent = __decorate([
+    AppComponent = __decorate([
         core_1.Component({
-            selector: "incident-list",
-            templateUrl: "incident-list.cmp.html",
-            styleUrls: ["incident-list.cmp.css"],
+            selector: "vogue-app",
+            templateUrl: "app.html",
+            styleUrls: ["app.css"],
+            directives: [incident_list_1.IncidentListComponent],
             moduleId: module.id
         }), 
         __metadata('design:paramtypes', [])
-    ], IncidentComponent);
-    return IncidentComponent;
+    ], AppComponent);
+    return AppComponent;
 }());
-exports.IncidentComponent = IncidentComponent;
-var Incident = (function () {
-    function Incident() {
-    }
-    return Incident;
-}());
-exports.Incident = Incident;
-//# sourceMappingURL=incident-list.cmp.js.map
+exports.AppComponent = AppComponent;
+//# sourceMappingURL=app.js.map

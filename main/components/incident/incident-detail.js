@@ -9,22 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var incident_list_cmp_1 = require('./incident-list/incident-list.cmp');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = "Vogue Incidents";
+var incident_1 = require('main/model/incident');
+var IncidentDetailComponent = (function () {
+    function IncidentDetailComponent() {
     }
-    AppComponent = __decorate([
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', (typeof (_a = typeof incident_1.Incident !== 'undefined' && incident_1.Incident) === 'function' && _a) || Object)
+    ], IncidentDetailComponent.prototype, "incident", void 0);
+    IncidentDetailComponent = __decorate([
         core_1.Component({
-            selector: "vogue-app",
-            templateUrl: "app.cmp.html",
-            styleUrls: ["app.cmp.css"],
-            directives: [incident_list_cmp_1.IncidentComponent],
+            selector: "incident-detail",
+            templateUrl: "incident-detail.html",
             moduleId: module.id
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], IncidentDetailComponent);
+    return IncidentDetailComponent;
+    var _a;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.cmp.js.map
+exports.IncidentDetailComponent = IncidentDetailComponent;
+//# sourceMappingURL=incident-detail.js.map

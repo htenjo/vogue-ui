@@ -1,0 +1,32 @@
+<button (click)="showEmptyForm()"> Crear Incidente</button>
+<table>
+    <thead>
+        <tr>
+            <th>SIO</th>
+            <th>Creación</th>
+            <th>Tipo</th>
+            <th>Criticidad</th>
+            <th>Severidad</th>
+            <th>Probabilidad</th>
+            <th>% Completado</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let incident of incidents">
+            <td>{{incident.sio}}</td>
+            <td>{{incident.creationDate}}</td>
+            <td>{{incident.type}}</td>
+            <td>{{incident.criticity}}</td>
+            <td>{{incident.severity}}</td>
+            <td>{{incident.probability}}</td>
+            <td>{{incident.completed}}%</td>
+            <td>
+                <button (click)="selectIncident(incident)">Edit</button>
+                <button>Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<incident-detail [incident]="selectedIncident"></incident-detail>

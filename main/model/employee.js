@@ -11,4 +11,4 @@ var Area = (function () {
     return Area;
 }());
 exports.Area = Area;
-//# sourceMappingURL=employee.js.map
+//# sourceMappingURL=Employee.js.map

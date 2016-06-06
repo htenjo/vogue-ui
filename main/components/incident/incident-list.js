@@ -10,9 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var incident_detail_1 = require('./incident-detail');
+var incident_service_1 = require('../../services/incident-service');
 var IncidentListComponent = (function () {
-    function IncidentListComponent() {
-        this.incidents = IncidentInfo;
+    function IncidentListComponent(service) {
+        this.service = service;
     }
     IncidentListComponent.prototype.selectIncident = function (incident) {
         console.log("Incident selected " + incident.sio);
@@ -21,33 +22,23 @@ var IncidentListComponent = (function () {
     IncidentListComponent.prototype.showEmptyForm = function () {
         this.selectedIncident = {};
     };
+    IncidentListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var response = this.service.findAllIncidents()
+            .then(function (incidents) { return _this.incidents = incidents; });
+    };
     IncidentListComponent = __decorate([
         core_1.Component({
             selector: "incident-list",
             templateUrl: "incident-list.html",
             styleUrls: ["incident-list.css"],
             directives: [incident_detail_1.IncidentDetailComponent],
+            providers: [incident_service_1.IncidentService],
             moduleId: module.id
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [incident_service_1.IncidentService])
     ], IncidentListComponent);
     return IncidentListComponent;
 }());
 exports.IncidentListComponent = IncidentListComponent;
-var IncidentInfo = [
-    { sio: "1", creationDate: "2016-06-02", type: "type", criticity: "criticity", severity: "severity", probability: "probability", completed: 95 },
-    { sio: "2", creationDate: "2016-06-02", type: "type", criticity: "criticity", severity: "severity", probability: "probability", completed: 95 },
-    { sio: "3", creationDate: "2016-06-02", type: "type", criticity: "criticity", severity: "severity", probability: "probability", completed: 95 },
-    { sio: "4", creationDate: "2016-06-02", type: "type", criticity: "criticity", severity: "severity", probability: "probability", completed: 95 },
-    { sio: "5", creationDate: "2016-06-02", type: "type", criticity: "criticity", severity: "severity", probability: "probability", completed: 95 },
-    { sio: "6", creationDate: "2016-06-02", type: "type", criticity: "criticity", severity: "severity", probability: "probability", completed: 95 },
-    { sio: "7", creationDate: "2016-06-02", type: "type", criticity: "criticity", severity: "severity", probability: "probability", completed: 95 },
-    { sio: "8", creationDate: "2016-06-02", type: "type", criticity: "criticity", severity: "severity", probability: "probability", completed: 95 },
-    { sio: "9", creationDate: "2016-06-02", type: "type", criticity: "criticity", severity: "severity", probability: "probability", completed: 95 },
-    { sio: "10", creationDate: "2016-06-02", type: "type", criticity: "criticity", severity: "severity", probability: "probability", completed: 95 },
-    { sio: "11", creationDate: "2016-06-02", type: "type", criticity: "criticity", severity: "severity", probability: "probability", completed: 95 },
-    { sio: "12", creationDate: "2016-06-02", type: "type", criticity: "criticity", severity: "severity", probability: "probability", completed: 95 },
-    { sio: "13", creationDate: "2016-06-02", type: "type", criticity: "criticity", severity: "severity", probability: "probability", completed: 95 },
-    { sio: "14", creationDate: "2016-06-02", type: "type", criticity: "criticity", severity: "severity", probability: "probability", completed: 95 }
-];
 //# sourceMappingURL=incident-list.js.map

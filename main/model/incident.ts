@@ -1,14 +1,20 @@
 import {Employee, Area} from '../employee';
 
-export class Incident{
+export interface Incident{
   sio: string;
-  creationDate: string;
   type: string;
-  criticity: string;
   severity: string;
   probability: string;
-  completed: number;
-  
+  percentageCompleted: number;
+}
+
+
+export class IncidentDetail implements Incident{
+  sio: string;
+  type: string;
+  severity: string;
+  probability: string;
+  percentageCompleted: number;
   
   collaborator: Employee;
   area: Area;

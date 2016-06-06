@@ -1,1 +1,1 @@
-{"version":3,"file":"employee.js","sourceRoot":"","sources":["employee.ts"],"names":[],"mappings":";AAAA;IAAA;IAGA,CAAC;IAAD,eAAC;AAAD,CAAC,AAHD,IAGC;AAHY,gBAAQ,WAGpB,CAAA;AAED;IAAA;IAEA,CAAC;IAAD,WAAC;AAAD,CAAC,AAFD,IAEC;AAFY,YAAI,OAEhB,CAAA"}
+{"version":3,"file":"Employee.js","sourceRoot":"","sources":["Employee.ts"],"names":[],"mappings":";AAAA;IAAA;IAIA,CAAC;IAAD,eAAC;AAAD,CAAC,AAJD,IAIC;AAJY,gBAAQ,WAIpB,CAAA;AAED;IAAA;IAGA,CAAC;IAAD,WAAC;AAAD,CAAC,AAHD,IAGC;AAHY,YAAI,OAGhB,CAAA"}

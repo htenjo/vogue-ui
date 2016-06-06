@@ -1,8 +1,8 @@
 "use strict";
-var Incident = (function () {
-    function Incident() {
+var IncidentDetail = (function () {
+    function IncidentDetail() {
     }
-    return Incident;
+    return IncidentDetail;
 }());
-exports.Incident = Incident;
+exports.IncidentDetail = IncidentDetail;
 //# sourceMappingURL=incident.js.map

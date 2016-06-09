@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { INCIDENT_INFO} from './incident-mocks';
 import {Employee, Area} from '../model/Employee';
  
 

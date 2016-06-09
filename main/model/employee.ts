@@ -1,10 +1,13 @@
 export class Employee{
-    id: string;
-    name : string;
+    id: number;
+    firstName : string;
+    lastName : string;
     email: string;
+    boss: boolean;
+    area: Area;
 }
 
 export class Area{
-    id: string;
+    id: number;
     name: string
 }

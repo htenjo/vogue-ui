@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var incident_detail_1 = require('./incident-detail');
-var incident_service_1 = require('../../services/incident-service');
+var event_service_1 = require('../../services/event-service');
 var IncidentListComponent = (function () {
     function IncidentListComponent(service) {
         this.service = service;
@@ -20,7 +20,7 @@ var IncidentListComponent = (function () {
         this.selectedIncident = incident;
     };
     IncidentListComponent.prototype.showEmptyForm = function () {
-        this.selectedIncident = {};
+        //this.selectedIncident = {}
     };
     IncidentListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -33,10 +33,9 @@ var IncidentListComponent = (function () {
             templateUrl: "incident-list.html",
             styleUrls: ["incident-list.css"],
             directives: [incident_detail_1.IncidentDetailComponent],
-            providers: [incident_service_1.IncidentService],
-            moduleId: module.id
+            providers: [event_service_1.EventService]
         }), 
-        __metadata('design:paramtypes', [incident_service_1.IncidentService])
+        __metadata('design:paramtypes', [event_service_1.EventService])
     ], IncidentListComponent);
     return IncidentListComponent;
 }());

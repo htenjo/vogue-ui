@@ -11,29 +11,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
-var IncidentService = (function () {
-    function IncidentService(http) {
+var EventService = (function () {
+    function EventService(http) {
         this.http = http;
         this.incidentsUrl = "http://localhost:8080/incidents";
     }
-    IncidentService.prototype.findAllIncidents = function () {
+    EventService.prototype.findAllIncidents = function () {
         return this.http.get(this.incidentsUrl)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    IncidentService.prototype.findIncident = function (id) {
+    EventService.prototype.findIncident = function (id) {
         return;
     };
-    IncidentService.prototype.handleError = function (error) {
+    EventService.prototype.handleError = function (error) {
         console.error('::: IncidentService-ERROR: ', error);
         return Promise.reject(error.message || error);
     };
-    IncidentService = __decorate([
+    EventService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], IncidentService);
-    return IncidentService;
+    ], EventService);
+    return EventService;
 }());
-exports.IncidentService = IncidentService;
-//# sourceMappingURL=incident-service.js.map
+exports.EventService = EventService;
+//# sourceMappingURL=event-service.js.map

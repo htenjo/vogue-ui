@@ -1,30 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { Incident } from 'main/model/incident';
+import { Event } from '../../model/event';
 import { IncidentDetailComponent } from './incident-detail';
-import { IncidentService } from '../../services/incident-service';
+import { EventService } from '../../services/event-service';
 
 @Component({
   selector: "incident-list",
   templateUrl: "incident-list.html",
   styleUrls: ["incident-list.css"],
   directives: [IncidentDetailComponent],
-  providers: [IncidentService],
-  moduleId: module.id
+  providers: [EventService]
 })
 export class IncidentListComponent { 
-    incidents : Incident[];
-    selectedIncident: Incident;
+    incidents : Event[];
+    selectedIncident: Event;
     
-    constructor(private service: IncidentService){
+    constructor(private service: EventService){
     }
     
-    selectIncident(incident: Incident){
+    selectIncident(incident: Event){
       console.log("Incident selected " + incident.sio);
       this.selectedIncident = incident;
     }
     
     showEmptyForm(){
-      this.selectedIncident = {}
+      //this.selectedIncident = {}
     }
     
     ngOnInit(){

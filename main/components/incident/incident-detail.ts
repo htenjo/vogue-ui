@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Incident } from 'main/model/incident';
+import { Event } from '../../model/event';
 
 @Component({
   selector: "incident-detail",
@@ -8,5 +8,5 @@ import { Incident } from 'main/model/incident';
 })
 export class IncidentDetailComponent {
     @Input()
-    incident: Incident;
+    event: Event;
 }

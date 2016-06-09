@@ -9,14 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var incident_1 = require('main/model/incident');
 var IncidentDetailComponent = (function () {
     function IncidentDetailComponent() {
     }
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', (typeof (_a = typeof incident_1.Incident !== 'undefined' && incident_1.Incident) === 'function' && _a) || Object)
-    ], IncidentDetailComponent.prototype, "incident", void 0);
+        __metadata('design:type', event_1.Event)
+    ], IncidentDetailComponent.prototype, "event", void 0);
     IncidentDetailComponent = __decorate([
         core_1.Component({
             selector: "incident-detail",
@@ -26,7 +25,6 @@ var IncidentDetailComponent = (function () {
         __metadata('design:paramtypes', [])
     ], IncidentDetailComponent);
     return IncidentDetailComponent;
-    var _a;
 }());
 exports.IncidentDetailComponent = IncidentDetailComponent;
 //# sourceMappingURL=incident-detail.js.map

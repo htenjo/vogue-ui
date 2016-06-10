@@ -9,22 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var IncidentDetailComponent = (function () {
-    function IncidentDetailComponent() {
+var EventDetailComponent = (function () {
+    function EventDetailComponent() {
     }
+    EventDetailComponent.prototype.save = function () {
+        this.event = null;
+    };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', event_1.Event)
-    ], IncidentDetailComponent.prototype, "event", void 0);
-    IncidentDetailComponent = __decorate([
+        __metadata('design:type', Object)
+    ], EventDetailComponent.prototype, "event", void 0);
+    EventDetailComponent = __decorate([
         core_1.Component({
-            selector: "incident-detail",
-            templateUrl: "incident-detail.html",
+            selector: "event-detail",
+            templateUrl: "event-detail.html",
             moduleId: module.id
         }), 
         __metadata('design:paramtypes', [])
-    ], IncidentDetailComponent);
-    return IncidentDetailComponent;
+    ], EventDetailComponent);
+    return EventDetailComponent;
 }());
-exports.IncidentDetailComponent = IncidentDetailComponent;
-//# sourceMappingURL=incident-detail.js.map
+exports.EventDetailComponent = EventDetailComponent;
+//# sourceMappingURL=event-detail.js.map

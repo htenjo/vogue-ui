@@ -1,0 +1,33 @@
+<div *ngIf="event">
+    <div>
+        <label>ID</label>
+        <input [(ngModel)]="event.id" placeholder="ID"/>
+    </div>
+    <div>
+        <label>SIO</label>
+        <input [(ngModel)]="event.sio" placeholder="SIO"/>
+    </div>
+    <div>
+        <label>Tipo</label>
+        <input [(ngModel)]="event.eventType" placeholder="Tipo"/>
+    </div>
+    <div>
+        <label>Creación</label>
+        <input [(ngModel)]="event.createdDate" placeholder="Creación"/>
+    </div>
+    <div>
+        <label>Description</label>
+        <input [(ngModel)]="event.description" placeholder="Description"/>
+    </div>
+    <div>
+        <label>Área</label>
+        
+    </div>
+    <div>
+        <label>Supervisor</label>
+        
+    </div>
+    <div>
+        <button (click)="save()">Guardar</button>
+    </div>
+</div>

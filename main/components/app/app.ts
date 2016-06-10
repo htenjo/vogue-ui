@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { IncidentListComponent } from '../incident/incident-list';
+import { EventListComponent } from '../event/event-list';
 
 @Component({
   selector: "vogue-app",
   templateUrl: "app.html",
   styleUrls: ["app.css"],
-  directives: [IncidentListComponent],
+  directives: [EventListComponent],
   moduleId: module.id
 })
 
 export class AppComponent { 
-    title : string = "Vogue Incidents"
+    title : string = "Vogue - Eventos de Seguridad"
 }

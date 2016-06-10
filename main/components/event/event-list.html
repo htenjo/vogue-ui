@@ -1,0 +1,31 @@
+<div class="event-list-container">
+    <button (click)="showEmptyForm()"> Crear Evento</button>
+    <table>
+        <thead>
+            <tr>
+                <th>SIO</th>
+                <th>Creación</th>
+                <th>Tipo</th>
+                <th>Severidad</th>
+                <th>Probabilidad</th>
+                <th>% Completado</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let event of events">
+                <td>{{event.sio}}</td>
+                <td>{{event.createdDate}}</td>
+                <td>{{event.eventType}}</td>
+                <td>
+                    <button (click)="selectEvent(event)">Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>  
+</div>
+
+<div class="event-list-form-container">
+    <event-detail [event]="selectedEvent"></event-detail>    
+</div>

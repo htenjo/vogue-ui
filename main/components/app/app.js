@@ -9,17 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var incident_list_1 = require('../incident/incident-list');
+var event_list_1 = require('../event/event-list');
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = "Vogue Incidents";
+        this.title = "Vogue - Eventos de Seguridad";
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: "vogue-app",
             templateUrl: "app.html",
             styleUrls: ["app.css"],
-            directives: [incident_list_1.IncidentListComponent],
+            directives: [event_list_1.EventListComponent],
             moduleId: module.id
         }), 
         __metadata('design:paramtypes', [])

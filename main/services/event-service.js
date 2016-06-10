@@ -11,22 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
+var API_SERVER_BASE_URL = "http://localhost:8080";
+var API_EVENT_URI = "/event";
+var API_EMPLOYEE_END_POINT = "/employee";
+var API_AREA_END_POINT = "/area";
+var API_TASK_END_POINT = "/event/{eventId}/task";
 var EventService = (function () {
     function EventService(http) {
         this.http = http;
-        this.incidentsUrl = "http://localhost:8080/incidents";
+        this.event_end_point = API_SERVER_BASE_URL + API_EVENT_URI;
     }
-    EventService.prototype.findAllIncidents = function () {
-        return this.http.get(this.incidentsUrl)
+    EventService.prototype.list = function () {
+        return this.http.get(this.event_end_point)
+            .toPromise()
+            .then(function (response) { return response.json().content; })
+            .catch(this.handleError);
+    };
+    EventService.prototype.find = function (id) {
+        return this.http.get(this.event_end_point)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    EventService.prototype.findIncident = function (id) {
-        return;
-    };
     EventService.prototype.handleError = function (error) {
-        console.error('::: IncidentService-ERROR: ', error);
+        console.error('::: EventService-ERROR: ', error);
         return Promise.reject(error.message || error);
     };
     EventService = __decorate([

@@ -9,23 +9,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var event_1 = require('../../model/event');
 var event_detail_1 = require('./event-detail');
 var event_service_1 = require('../../services/event-service');
+var DEFAULT_ITEMS_BY_PAGE = 5;
 var EventListComponent = (function () {
     function EventListComponent(service) {
         this.service = service;
+        this.currentPage = 1;
+        this.totalPages = 0;
     }
+    EventListComponent.prototype.ngOnInit = function () {
+        this.loadEvents();
+    };
     EventListComponent.prototype.selectEvent = function (event) {
         console.log("Event selected " + event.id);
         this.selectedEvent = event;
     };
     EventListComponent.prototype.showEmptyForm = function () {
-        //this.selectedEvent = {};
+        this.selectedEvent = new event_1.EventImpl();
     };
-    EventListComponent.prototype.ngOnInit = function () {
+    EventListComponent.prototype.loadEvents = function () {
         var _this = this;
-        var response = this.service.list()
-            .then(function (events) { return _this.events = events; });
+        var response = this.service.list(DEFAULT_ITEMS_BY_PAGE, this.currentPage - 1)
+            .then(function (listWrapper) {
+            _this.events = listWrapper.content;
+            _this.currentPage = listWrapper.number + 1;
+            _this.totalPages = listWrapper.totalPages;
+        });
+    };
+    EventListComponent.prototype.nextPage = function () {
+        if (this.currentPage < this.totalPages) {
+            this.currentPage++;
+            this.loadEvents();
+        }
+    };
+    EventListComponent.prototype.beforePage = function () {
+        if (this.currentPage > 1) {
+            this.currentPage--;
+            this.loadEvents();
+        }
     };
     EventListComponent = __decorate([
         core_1.Component({

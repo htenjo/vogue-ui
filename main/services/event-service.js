@@ -19,16 +19,30 @@ var API_TASK_END_POINT = "/event/{eventId}/task";
 var EventService = (function () {
     function EventService(http) {
         this.http = http;
-        this.event_end_point = API_SERVER_BASE_URL + API_EVENT_URI;
+        this.eventEndPoint = API_SERVER_BASE_URL + API_EVENT_URI;
     }
-    EventService.prototype.list = function () {
-        return this.http.get(this.event_end_point)
+    EventService.prototype.list = function (itemsByPage, requiredPage) {
+        var options = new http_1.RequestOptions();
+        var query = new http_1.URLSearchParams();
+        query.append("size", itemsByPage.toString());
+        query.append("page", requiredPage.toString());
+        options.search = query;
+        return this.http.get(this.eventEndPoint, options)
             .toPromise()
-            .then(function (response) { return response.json().content; })
+            .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
     EventService.prototype.find = function (id) {
-        return this.http.get(this.event_end_point)
+        return this.http.get(this.eventEndPoint)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    EventService.prototype.create = function (event) {
+        var body = JSON.stringify(event);
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post(this.eventEndPoint, body, options)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);

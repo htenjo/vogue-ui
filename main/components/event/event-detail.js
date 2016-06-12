@@ -9,10 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var event_service_1 = require('../../services/event-service');
 var EventDetailComponent = (function () {
-    function EventDetailComponent() {
+    function EventDetailComponent(service) {
+        this.service = service;
     }
     EventDetailComponent.prototype.save = function () {
+        var _this = this;
+        this.service.create(this.event).then(function (event) { return _this.event = event; });
+    };
+    EventDetailComponent.prototype.cancel = function () {
         this.event = null;
     };
     __decorate([
@@ -23,9 +29,10 @@ var EventDetailComponent = (function () {
         core_1.Component({
             selector: "event-detail",
             templateUrl: "event-detail.html",
+            providers: [event_service_1.EventService],
             moduleId: module.id
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [event_service_1.EventService])
     ], EventDetailComponent);
     return EventDetailComponent;
 }());

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Event } from '../../model/event';
+import { Event, EventImpl } from '../../model/event';
+import { ListWrapper } from '../../model/common';
 import { EventDetailComponent } from './event-detail';
 import { EventService } from '../../services/event-service';
+
+const DEFAULT_ITEMS_BY_PAGE = 5;
 
 @Component({
   selector: "event-list",
@@ -11,24 +14,48 @@ import { EventService } from '../../services/event-service';
   providers: [EventService],
   moduleId: module.id
 })
-export class EventListComponent { 
+export class EventListComponent {
     events : Event[];
     selectedEvent: Event;
+    currentPage: number = 1;
+    totalPages: number = 0;
     
     constructor(private service: EventService){
     }
     
+    ngOnInit(){
+      this.loadEvents();
+    }
+
     selectEvent(event: Event){
       console.log("Event selected " + event.id);
       this.selectedEvent = event;
     }
     
     showEmptyForm(){
-      //this.selectedEvent = {};
+      this.selectedEvent = new EventImpl();
     }
     
-    ngOnInit(){
-      let response = this.service.list()
-        .then(events => this.events = events);
+    loadEvents(){
+      let response = this.service.list(DEFAULT_ITEMS_BY_PAGE, this.currentPage - 1)
+        .then(listWrapper => {
+          this.events = listWrapper.content;
+          this.currentPage = listWrapper.number + 1;
+          this.totalPages = listWrapper.totalPages;
+        });
+    }
+
+    nextPage(){
+      if(this.currentPage < this.totalPages){
+        this.currentPage++;
+        this.loadEvents();
+      }
+    }
+
+    beforePage(){
+      if(this.currentPage > 1){
+        this.currentPage--;
+        this.loadEvents();
+      }
     }
 }

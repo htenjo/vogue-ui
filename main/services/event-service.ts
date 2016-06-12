@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { EVENT_INFO } from './event-mocks';
 import { Event } from '../model/event';
-import { Headers, Http } from '@angular/http';
+import { ListWrapper } from '../model/common';
+import { Headers, Http, RequestOptions, URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 const API_SERVER_BASE_URL = "http://localhost:8080";
@@ -12,19 +13,36 @@ const API_TASK_END_POINT = "/event/{eventId}/task";
 
 @Injectable()
 export class EventService {
-    private event_end_point = API_SERVER_BASE_URL + API_EVENT_URI;
+    private eventEndPoint = API_SERVER_BASE_URL + API_EVENT_URI;
 
     constructor(private http: Http) { }
 
-    list(): Promise<Event[]> {
-        return this.http.get(this.event_end_point)
+    list(itemsByPage: number, requiredPage:number): Promise<ListWrapper<Event>> {
+        let options = new RequestOptions();
+        let query = new URLSearchParams();
+        query.append("size", itemsByPage.toString());
+        query.append("page", requiredPage.toString());
+        options.search = query;
+
+        return this.http.get(this.eventEndPoint, options)
             .toPromise()
-            .then(response => response.json().content)
+            .then(response => response.json())
             .catch(this.handleError);
     }
 
     find(id: number): Promise<Event[]> {
-        return this.http.get(this.event_end_point)
+        return this.http.get(this.eventEndPoint)
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.handleError);
+    }
+
+    create(event: Event): Promise<Event>{
+        let body = JSON.stringify(event);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(this.eventEndPoint, body, options)
             .toPromise()
             .then(response => response.json())
             .catch(this.handleError);

@@ -21,7 +21,7 @@
             </tr>
         </tbody>
     </table>
-    <div>
+    <div *ngIf="totalPages > 1">
         <button (click)="beforePage()">Anterior</button>
          Page {{currentPage}} of {{totalPages}} 
         <button (click)="nextPage()">Siguiente</button>

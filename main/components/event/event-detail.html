@@ -9,7 +9,9 @@
     </div>
     <div>
         <label>Tipo</label>
-        <input [(ngModel)]="event.eventType" placeholder="Tipo"/>
+        <select [(ngModel)]="event.eventType">
+            <option *ngFor="let type of eventTypes">{{type}}</option>
+        </select>
     </div>
     <div>
         <label>Creación</label>
@@ -21,7 +23,6 @@
     </div>
     <div>
         <label>Área</label>
-        
     </div>
     <div>
         <label>Supervisor</label>

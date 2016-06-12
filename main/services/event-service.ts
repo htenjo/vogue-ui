@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { EVENT_INFO } from './event-mocks';
 import { Event } from '../model/event';
 import { ListWrapper } from '../model/common';
 import { Headers, Http, RequestOptions, URLSearchParams} from '@angular/http';
@@ -7,13 +6,13 @@ import 'rxjs/add/operator/toPromise';
 
 const API_SERVER_BASE_URL = "http://localhost:8080";
 const API_EVENT_URI = "/event";
-const API_EMPLOYEE_END_POINT = "/employee";
-const API_AREA_END_POINT = "/area";
+const API_EVENT_TYPE_URI = "/utils/reportTypes";
 const API_TASK_END_POINT = "/event/{eventId}/task";
 
 @Injectable()
 export class EventService {
     private eventEndPoint = API_SERVER_BASE_URL + API_EVENT_URI;
+    private eventTypeEndPoint = API_SERVER_BASE_URL + API_EVENT_TYPE_URI;
 
     constructor(private http: Http) { }
 
@@ -25,6 +24,13 @@ export class EventService {
         options.search = query;
 
         return this.http.get(this.eventEndPoint, options)
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.handleError);
+    }
+    
+    listEventTypes(): Promise<string[]> {
+        return this.http.get(this.eventTypeEndPoint)
             .toPromise()
             .then(response => response.json())
             .catch(this.handleError);
@@ -46,6 +52,10 @@ export class EventService {
             .toPromise()
             .then(response => response.json())
             .catch(this.handleError);
+    }
+    
+    delete(id: number) : void {
+        console.log("::: Operation not implemented yet");
     }
 
     private handleError(error: any) {

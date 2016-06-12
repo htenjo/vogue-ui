@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Event } from '../../model/event';
 import { EventService } from '../../services/event-service';
 
@@ -10,9 +10,14 @@ import { EventService } from '../../services/event-service';
 })
 export class EventDetailComponent {
     @Input()
-    event;
+    event: Event;
+    eventTypes : string[];
 
     constructor(private service: EventService){
+    }
+    
+    ngOnInit(){
+      this.loadEventTypes();
     }
 
     save(){
@@ -23,5 +28,10 @@ export class EventDetailComponent {
 
     cancel(){
       this.event = null;
+    }
+    
+    loadEventTypes(){
+      let response = this.service.listEventTypes()
+        .then(eventTypes => this.eventTypes = eventTypes);
     }
 }

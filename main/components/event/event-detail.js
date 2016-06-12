@@ -14,6 +14,9 @@ var EventDetailComponent = (function () {
     function EventDetailComponent(service) {
         this.service = service;
     }
+    EventDetailComponent.prototype.ngOnInit = function () {
+        this.loadEventTypes();
+    };
     EventDetailComponent.prototype.save = function () {
         var _this = this;
         this.service.create(this.event).then(function (event) { return _this.event = event; });
@@ -21,9 +24,14 @@ var EventDetailComponent = (function () {
     EventDetailComponent.prototype.cancel = function () {
         this.event = null;
     };
+    EventDetailComponent.prototype.loadEventTypes = function () {
+        var _this = this;
+        var response = this.service.listEventTypes()
+            .then(function (eventTypes) { return _this.eventTypes = eventTypes; });
+    };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Object)
+        __metadata('design:type', event.Event)
     ], EventDetailComponent.prototype, "event", void 0);
     EventDetailComponent = __decorate([
         core_1.Component({

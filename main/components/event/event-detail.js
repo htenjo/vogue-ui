@@ -31,7 +31,7 @@ var EventDetailComponent = (function () {
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', event.Event)
+        __metadata('design:type', event_1.Event)
     ], EventDetailComponent.prototype, "event", void 0);
     EventDetailComponent = __decorate([
         core_1.Component({

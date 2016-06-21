@@ -32,7 +32,7 @@ var EventListComponent = (function () {
     EventListComponent.prototype.loadEvents = function () {
         var _this = this;
         var response = this.service.list(DEFAULT_ITEMS_BY_PAGE, this.currentPage - 1)
-            .then(function (listWrapper) {
+            .subscribe(function (listWrapper) {
             _this.events = listWrapper.content;
             _this.currentPage = listWrapper.number + 1;
             _this.totalPages = listWrapper.totalPages;

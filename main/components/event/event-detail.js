@@ -9,17 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var event_1 = require('../../model/event');
 var event_service_1 = require('../../services/event-service');
 var EventDetailComponent = (function () {
     function EventDetailComponent(service) {
         this.service = service;
+        this.event = new event_1.EventImpl();
     }
     EventDetailComponent.prototype.ngOnInit = function () {
         this.loadEventTypes();
     };
     EventDetailComponent.prototype.save = function () {
         var _this = this;
-        this.service.create(this.event).then(function (event) { return _this.event = event; });
+        this.service.create(this.event).map(function (event) { return _this.event = event; });
     };
     EventDetailComponent.prototype.cancel = function () {
         this.event = null;
@@ -27,7 +29,7 @@ var EventDetailComponent = (function () {
     EventDetailComponent.prototype.loadEventTypes = function () {
         var _this = this;
         var response = this.service.listEventTypes()
-            .then(function (eventTypes) { return _this.eventTypes = eventTypes; });
+            .map(function (eventTypes) { return _this.eventTypes = eventTypes; });
     };
     __decorate([
         core_1.Input(), 

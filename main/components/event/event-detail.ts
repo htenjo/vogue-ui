@@ -10,7 +10,7 @@ import { EventService } from '../../services/event-service';
 })
 export class EventDetailComponent {
     @Input()
-    event: Event;
+    event: Event = new EventImpl();
     eventTypes : string[];
 
     constructor(private service: EventService){
@@ -21,7 +21,7 @@ export class EventDetailComponent {
     }
 
     save(){
-      this.service.create(this.event).then(
+      this.service.create(this.event).map(
         event => this.event = event
       );
     }
@@ -32,6 +32,6 @@ export class EventDetailComponent {
     
     loadEventTypes(){
       let response = this.service.listEventTypes()
-        .then(eventTypes => this.eventTypes = eventTypes);
+        .map(eventTypes => this.eventTypes = eventTypes);
     }
 }

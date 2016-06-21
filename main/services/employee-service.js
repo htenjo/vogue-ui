@@ -9,18 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/toPromise');
+require('./rxjs-operators');
+var Observable_1 = require('rxjs/Observable');
+var API_SERVER_BASE_URL = "http://localhost:8080";
+var API_EMPLOYEE_URI = "/employee";
 var EmployeeService = (function () {
-    function EmployeeService() {
+    function EmployeeService(http) {
+        this.http = http;
+        this.areaEndPoint = API_SERVER_BASE_URL + API_EMPLOYEE_URI;
     }
-    EmployeeService.prototype.findEmployeesByName = function (name) {
-        return;
+    EmployeeService.prototype.listAll = function () {
+        return this.http.get(this.areaEndPoint)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
     };
-    EmployeeService.prototype.findAreaByName = function (name) {
-        return;
+    EmployeeService.prototype.handleError = function (error) {
+        console.error('::: EventService-ERROR: ', error);
+        return Observable_1.Observable.throw(error.message || error);
     };
     EmployeeService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], EmployeeService);
     return EmployeeService;
 }());

@@ -38,7 +38,7 @@ export class EventListComponent {
     
     loadEvents(){
       let response = this.service.list(DEFAULT_ITEMS_BY_PAGE, this.currentPage - 1)
-        .then(listWrapper => {
+        .subscribe(listWrapper => {
           this.events = listWrapper.content;
           this.currentPage = listWrapper.number + 1;
           this.totalPages = listWrapper.totalPages;

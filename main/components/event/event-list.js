@@ -27,7 +27,7 @@ var EventListComponent = (function () {
         this.selectedEvent = event;
     };
     EventListComponent.prototype.showEmptyForm = function () {
-        this.selectedEvent = new event_1.EventImpl();
+        this.selectedEvent = new event_1.Event();
     };
     EventListComponent.prototype.loadEvents = function () {
         var _this = this;

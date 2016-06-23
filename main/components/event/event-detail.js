@@ -11,25 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var event_1 = require('../../model/event');
 var event_service_1 = require('../../services/event-service');
+var area_service_1 = require('../../services/area-service');
 var EventDetailComponent = (function () {
-    function EventDetailComponent(service) {
-        this.service = service;
-        this.event = new event_1.EventImpl();
+    function EventDetailComponent(eventService, areaService) {
+        this.eventService = eventService;
+        this.areaService = areaService;
     }
     EventDetailComponent.prototype.ngOnInit = function () {
         this.loadEventTypes();
+        this.loadAreas();
     };
     EventDetailComponent.prototype.save = function () {
         var _this = this;
-        this.service.create(this.event).map(function (event) { return _this.event = event; });
+        this.eventService.create(this.event).subscribe(function (event) { return _this.event = event; });
     };
     EventDetailComponent.prototype.cancel = function () {
         this.event = null;
     };
     EventDetailComponent.prototype.loadEventTypes = function () {
         var _this = this;
-        var response = this.service.listEventTypes()
-            .map(function (eventTypes) { return _this.eventTypes = eventTypes; });
+        this.eventService.listEventTypes().subscribe(function (eventTypes) { return _this.eventTypes = eventTypes; });
+    };
+    EventDetailComponent.prototype.loadAreas = function () {
+        var _this = this;
+        this.areaService.listAll().subscribe(function (areas) { return _this.areas = areas; });
     };
     __decorate([
         core_1.Input(), 
@@ -39,10 +44,10 @@ var EventDetailComponent = (function () {
         core_1.Component({
             selector: "event-detail",
             templateUrl: "event-detail.html",
-            providers: [event_service_1.EventService],
+            providers: [event_service_1.EventService, area_service_1.AreaService],
             moduleId: module.id
         }), 
-        __metadata('design:paramtypes', [event_service_1.EventService])
+        __metadata('design:paramtypes', [event_service_1.EventService, area_service_1.AreaService])
     ], EventDetailComponent);
     return EventDetailComponent;
 }());

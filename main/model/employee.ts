@@ -9,5 +9,5 @@ export class Employee{
 
 export class Area{
     id: number;
-    name: string
+    name: string;
 }

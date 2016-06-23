@@ -1,8 +1,8 @@
 "use strict";
-var EventImpl = (function () {
-    function EventImpl() {
+var Event = (function () {
+    function Event() {
     }
-    return EventImpl;
+    return Event;
 }());
-exports.EventImpl = EventImpl;
+exports.Event = Event;
 //# sourceMappingURL=event.js.map

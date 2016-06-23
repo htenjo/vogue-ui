@@ -14,9 +14,9 @@ export class AreaService {
     
     constructor(private http: Http) { }
 
-    listAll(): Observable<Area>{
+    listAll(): Observable<Area[]>{
         return this.http.get(this.areaEndPoint)
-            .map(response => response.json())
+            .map(response => response.json().content)
             .catch(this.handleError);
     }
     

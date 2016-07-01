@@ -30,8 +30,8 @@ export class EventService {
             .catch(this.handleError);
     }
     
-    list(itemsByPage: number, requiredPage:number): Observable<ListWrapper<Event>>{
-        
+    listHot(itemsByPage: number, requiredPage:number): Observable<ListWrapper<Event>>{
+        return null;
     }
     
     listEventTypes(): Observable<string[]> {

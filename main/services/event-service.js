@@ -33,7 +33,8 @@ var EventService = (function () {
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    EventService.prototype.list = function (itemsByPage, requiredPage) {
+    EventService.prototype.listHot = function (itemsByPage, requiredPage) {
+        return null;
     };
     EventService.prototype.listEventTypes = function () {
         return this.http.get(this.eventTypeEndPoint)

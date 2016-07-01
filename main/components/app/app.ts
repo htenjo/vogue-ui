@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { EventListComponent } from '../event/event-list';
 
 @Component({

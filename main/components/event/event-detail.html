@@ -1,7 +1,7 @@
 <div *ngIf="event">
-    <div>
+    <div *ngIf="event.id">
         <label>ID</label>
-        <input [(ngModel)]="event.id" placeholder="ID"/>
+        <label placeholder="ID">{{event.id}}</label>
     </div>
     <div>
         <label>SIO</label>
@@ -23,6 +23,9 @@
     </div>
     <div>
         <label>Área</label>
+        <select [(ngModel)]="event.area">
+            <option *ngFor="let area of areas" [ngValue]="area">{{area.name}}</option>
+        </select>
     </div>
     <div>
         <label>Supervisor</label>

@@ -1,27 +1,32 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Event, EventImpl } from '../../model/event';
+import { Event } from '../../model/event';
+import { Area } from '../../model/employee';
 import { EventService } from '../../services/event-service';
+import { AreaService } from '../../services/area-service';
 
 @Component({
   selector: "event-detail",
   templateUrl: "event-detail.html",
-  providers: [EventService],
+  providers: [EventService, AreaService],
   moduleId: module.id
 })
-export class EventDetailComponent {
+export class EventDetailComponent implements OnInit{
     @Input()
     event: Event;
     eventTypes : string[];
+    areas: Area [];
 
-    constructor(private service: EventService){
+    constructor(private eventService: EventService
+      , private areaService: AreaService){
     }
     
     ngOnInit(){
       this.loadEventTypes();
+      this.loadAreas();
     }
 
     save(){
-      this.service.create(this.event).then(
+      this.eventService.create(this.event).subscribe(
         event => this.event = event
       );
     }
@@ -31,7 +36,14 @@ export class EventDetailComponent {
     }
     
     loadEventTypes(){
-      let response = this.service.listEventTypes()
-        .then(eventTypes => this.eventTypes = eventTypes);
+      this.eventService.listEventTypes().subscribe(
+        eventTypes => this.eventTypes = eventTypes
+      );
+    }
+
+    loadAreas(){
+      this.areaService.listAll().subscribe(
+        areas => this.areas = areas
+      );
     }
 }

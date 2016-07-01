@@ -9,21 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ReportService = (function () {
-    function ReportService() {
+var NavBar = (function () {
+    function NavBar() {
     }
-    //dates are in yyyy-MM-dd format
-    ReportService.prototype.buildPercentageCompleted = function (startDate, endDate) {
-        return 0;
-    };
-    ReportService.prototype.buildIncidentsByOwnerArea = function () {
-        return;
-    };
-    ReportService = __decorate([
-        core_1.Injectable(), 
+    NavBar = __decorate([
+        core_1.Component({
+            selector: "vogue-navbar",
+            templateUrl: "navbar.template.html",
+            moduleId: module.id
+        }), 
         __metadata('design:paramtypes', [])
-    ], ReportService);
-    return ReportService;
+    ], NavBar);
+    return NavBar;
 }());
-exports.ReportService = ReportService;
-//# sourceMappingURL=report-service.js.map
+exports.NavBar = NavBar;
+//# sourceMappingURL=navbar.component.js.map

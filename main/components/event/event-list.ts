@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Event, EventImpl } from '../../model/event';
+import { Event } from '../../model/event';
 import { ListWrapper } from '../../model/common';
 import { EventDetailComponent } from './event-detail';
 import { EventService } from '../../services/event-service';
@@ -33,12 +33,12 @@ export class EventListComponent {
     }
     
     showEmptyForm(){
-      this.selectedEvent = new EventImpl();
+      this.selectedEvent = new Event();
     }
     
     loadEvents(){
       let response = this.service.list(DEFAULT_ITEMS_BY_PAGE, this.currentPage - 1)
-        .then(listWrapper => {
+        .subscribe(listWrapper => {
           this.events = listWrapper.content;
           this.currentPage = listWrapper.number + 1;
           this.totalPages = listWrapper.totalPages;

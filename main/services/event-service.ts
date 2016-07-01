@@ -30,6 +30,10 @@ export class EventService {
             .catch(this.handleError);
     }
     
+    list(itemsByPage: number, requiredPage:number): Observable<ListWrapper<Event>>{
+        
+    }
+    
     listEventTypes(): Observable<string[]> {
         return this.http.get(this.eventTypeEndPoint)
             .map(response => response.json())

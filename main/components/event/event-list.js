@@ -31,7 +31,7 @@ var EventListComponent = (function () {
     };
     EventListComponent.prototype.loadEvents = function () {
         var _this = this;
-        var response = this.service.list(DEFAULT_ITEMS_BY_PAGE, this.currentPage - 1)
+        this.service.list(DEFAULT_ITEMS_BY_PAGE, this.currentPage - 1)
             .subscribe(function (listWrapper) {
             _this.events = listWrapper.content;
             _this.currentPage = listWrapper.number + 1;
@@ -56,7 +56,6 @@ var EventListComponent = (function () {
             templateUrl: "event-list.html",
             styleUrls: ["event-list.css"],
             directives: [event_detail_1.EventDetailComponent],
-            providers: [event_service_1.EventService],
             moduleId: module.id
         }), 
         __metadata('design:paramtypes', [event_service_1.EventService])

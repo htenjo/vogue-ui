@@ -44,7 +44,6 @@ var EventDetailComponent = (function () {
         core_1.Component({
             selector: "event-detail",
             templateUrl: "event-detail.html",
-            providers: [event_service_1.EventService, area_service_1.AreaService],
             moduleId: module.id
         }), 
         __metadata('design:paramtypes', [event_service_1.EventService, area_service_1.AreaService])

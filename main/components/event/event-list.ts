@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../../model/event';
-import { ListWrapper } from '../../model/common';
 import { EventDetailComponent } from './event-detail';
 import { EventService } from '../../services/event-service';
 
@@ -11,7 +10,6 @@ const DEFAULT_ITEMS_BY_PAGE = 5;
   templateUrl: "event-list.html",
   styleUrls: ["event-list.css"],
   directives: [EventDetailComponent],
-  providers: [EventService],
   moduleId: module.id
 })
 export class EventListComponent {
@@ -37,7 +35,7 @@ export class EventListComponent {
     }
     
     loadEvents(){
-      let response = this.service.list(DEFAULT_ITEMS_BY_PAGE, this.currentPage - 1)
+      this.service.list(DEFAULT_ITEMS_BY_PAGE, this.currentPage - 1)
         .subscribe(listWrapper => {
           this.events = listWrapper.content;
           this.currentPage = listWrapper.number + 1;

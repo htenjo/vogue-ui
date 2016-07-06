@@ -7,7 +7,6 @@ import { AreaService } from '../../services/area-service';
 @Component({
   selector: "event-detail",
   templateUrl: "event-detail.html",
-  providers: [EventService, AreaService],
   moduleId: module.id
 })
 export class EventDetailComponent implements OnInit{

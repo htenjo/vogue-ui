@@ -10,19 +10,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var NavBar = (function () {
-    function NavBar() {
+var navbar_component_1 = require('../navbar/navbar.component');
+var footer_component_1 = require('../footer/footer.component');
+var event_list_1 = require('../event/event-list');
+var event_service_1 = require('../../services/event-service');
+var area_service_1 = require('../../services/area-service');
+var AppComponent = (function () {
+    function AppComponent() {
+        this.title = "Vogue - Security Events";
     }
-    NavBar = __decorate([
+    AppComponent = __decorate([
         core_1.Component({
-            selector: "vogue-navbar",
-            templateUrl: "navbar.template.html",
-            directives: [router_1.ROUTER_DIRECTIVES],
+            selector: "vogue-app",
+            templateUrl: "app.template.html",
+            directives: [event_list_1.EventListComponent, navbar_component_1.NavBar, footer_component_1.Footer, router_1.ROUTER_DIRECTIVES],
+            providers: [event_service_1.EventService, area_service_1.AreaService],
             moduleId: module.id
         }), 
         __metadata('design:paramtypes', [])
-    ], NavBar);
-    return NavBar;
+    ], AppComponent);
+    return AppComponent;
 }());
-exports.NavBar = NavBar;
-//# sourceMappingURL=navbar.component.js.map
+exports.AppComponent = AppComponent;
+//# sourceMappingURL=app.component.js.map

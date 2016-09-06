@@ -1,6 +1,3 @@
-<vogue-navbar></vogue-navbar>
-
-<!-- Content -->
 <div class="container">
     <db-statistics></db-statistics>
 
@@ -8,7 +5,8 @@
         <div class="col-lg-2"></div>
         <div class="col-lg-4">
             <db-hot-event></db-hot-event>
-            <a href="./events.html">Ver todos los eventos</a>
+            <a [routerLink]="['/events']">View all events</a>
+            <router-outlet></router-outlet>
         </div>
         <div class="col-lg-4">
             <db-hot-task></db-hot-task>
@@ -17,5 +15,3 @@
         <div class="col-lg-2"></div>
     </div>
 </div>
-
-<vogue-footer></vogue-footer>

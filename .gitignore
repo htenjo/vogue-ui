@@ -2,3 +2,5 @@
 node_modules
 typings
 .idea
+/main/**/*.js
+/main/**/*.map

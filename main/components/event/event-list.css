@@ -1,8 +1,48 @@
 .event-list-form-container{
     float: left;
     margin-left: 100px;
+    width: 40%;
+    text-align: center;
+    padding: 30px;
 }
 
 .event-list-container{
     float: left;
+    text-align: center;
+    padding: 30px;
+    width: 50%;
+}
+
+.table_list{
+    font-size: 0.9em;
+}
+
+.table_list th{
+    text-align: center;
+}
+
+.table_list td{
+    vertical-align: middle;
+}
+
+.table_list .td_right{
+    text-align: right;
+    padding-right: 10px;
+    width: 70px;
+}
+
+.table_list_pager{
+    font-size: 0.9em;
+}
+
+.table_list_title{
+    /*float: left;*/
+    /*display: inline;*/
+    /*vertical-align: bottom;*/
+}
+
+.table_list_options{
+    float: right;
+    display: inline;
+    /*vertical-align: bottom;*/
 }

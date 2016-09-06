@@ -1,6 +1,11 @@
 <div class="event-list-container">
-    <button (click)="showEmptyForm()"> Crear Evento</button>
-    <table>
+    <div class="table_list_title">
+        <h2>Eventos</h2>
+    </div>
+    <div class="table_list_options">
+        <button (click)="showEmptyForm()" class="btn btn-link"> Crear Evento </button>
+    </div>
+    <table class="table table-hover table_list">
         <thead>
             <tr>
                 <th>SIO</th>
@@ -11,20 +16,20 @@
         </thead>
         <tbody>
             <tr *ngFor="let event of events">
-                <td>{{event.sio}}</td>
+                <td class="td_right">{{event.sio}}</td>
                 <td>{{event.createdDate}}</td>
                 <td>{{event.eventType}}</td>
                 <td>
-                    <button (click)="selectEvent(event)">Edit</button>
-                    <button>Delete</button>
+                    <button (click)="selectEvent(event)" class="btn btn-primary btn-xs">Edit</button>
+                    <button class="btn btn-danger btn-xs">Delete</button>
                 </td>
             </tr>
         </tbody>
     </table>
-    <div *ngIf="totalPages > 1">
-        <button (click)="beforePage()">Anterior</button>
+    <div class="table_list_pager" *ngIf="totalPages > 1">
+        <button (click)="beforePage()" class="btn btn-secondary btn-xs"> < </button>
          Page {{currentPage}} of {{totalPages}} 
-        <button (click)="nextPage()">Siguiente</button>
+        <button (click)="nextPage()" class="btn btn-secondary btn-xs"> > </button>
     </div>
 </div>
 

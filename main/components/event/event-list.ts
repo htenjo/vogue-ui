@@ -3,7 +3,7 @@ import { Event } from '../../model/event';
 import { EventDetailComponent } from './event-detail';
 import { EventService } from '../../services/event-service';
 
-const DEFAULT_ITEMS_BY_PAGE = 5;
+const DEFAULT_ITEMS_BY_PAGE = 10;
 
 @Component({
   selector: "event-list",

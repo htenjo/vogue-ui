@@ -10,10 +10,12 @@ const API_SERVER_BASE_URL = "http://localhost:8080";
 const API_EVENT_URI = "/event";
 const API_EVENT_TYPE_URI = "/utils/reportTypes";
 const API_TASK_END_POINT = "/event/{eventId}/task";
+const API_EVENT_HOT_URI = "/closeToExpire";
 
 @Injectable()
 export class EventService {
     private eventEndPoint = API_SERVER_BASE_URL + API_EVENT_URI;
+    private eventHotEndPoint = API_SERVER_BASE_URL + API_EVENT_URI + API_EVENT_HOT_URI;
     private eventTypeEndPoint = API_SERVER_BASE_URL + API_EVENT_TYPE_URI;
 
     constructor(private http: Http) { }
@@ -31,7 +33,15 @@ export class EventService {
     }
     
     listHot(itemsByPage: number, requiredPage:number): Observable<ListWrapper<Event>>{
-        return null;
+        let options = new RequestOptions();
+        let query = new URLSearchParams();
+        query.append("size", itemsByPage.toString());
+        query.append("page", requiredPage.toString());
+        options.search = query;
+
+        return this.http.get(this.eventHotEndPoint, options)
+            .map(response => response.json())
+            .catch(this.handleError);
     }
     
     listEventTypes(): Observable<string[]> {

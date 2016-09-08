@@ -4,3 +4,5 @@ typings
 .idea
 /main/**/*.js
 /main/**/*.map
+test.js
+test.js.map

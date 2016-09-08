@@ -7,15 +7,16 @@ import {EventListComponent} from '../event/event-list';
 
 import { EventService } from '../../services/event-service';
 import { AreaService } from '../../services/area-service';
+import { TaskService } from '../../services/task-service';
 
 @Component({
     selector: "vogue-app",
     templateUrl: "app.template.html",
     directives: [EventListComponent, NavBar, Footer, ROUTER_DIRECTIVES],
-    providers: [EventService, AreaService],
+    providers: [EventService, AreaService, TaskService],
     moduleId: module.id
 })
 
 export class AppComponent {
-    title:string = "Vogue - Security Events"
+    title:string = "Vogue - Safety Events"
 }

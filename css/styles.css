@@ -10,3 +10,7 @@
 .row .input-group{
   padding-bottom: 10px;
 }
+
+.small-footer-text{
+  font-size: 10px;
+}

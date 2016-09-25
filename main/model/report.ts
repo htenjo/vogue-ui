@@ -1,20 +1,50 @@
+import {Area, Employee} from "./employee";
 /**
  * Created by htenjo on 9/24/16.
  */
 
-export interface ReportTasksClosedInLastYear{
-    openTasks: number;
+/**
+ *
+ */
+interface ReportEventsCreated{
+    createdEvents : number;
+}
+
+interface ReportOpenTasks{
+    openTasks : number;
+}
+
+/**
+ *
+ */
+export interface ReportTasksClosedInLastYear extends ReportOpenTasks{
     totalTasks? : number;
     startDate: string;
     endDate: string;
 }
 
-export interface ReportEventsCreatedByEventType{
+/**
+ *
+ */
+export interface ReportEventsCreatedByEventType extends ReportEventsCreated{
     eventType : string;
-    createdEvents : number;
 }
 
-export interface ReportOpenTasksByEventType{
+/**
+ *
+ */
+export interface ReportOpenTasksByEventType extends ReportOpenTasks{
     type : string;
-    openTasks : number;
+}
+
+/**
+ *
+ */
+export interface ReportEventsCreatedByArea extends ReportEventsCreated{
+    area: Area;
+}
+
+export interface ReportTasksOpenByEmployee extends ReportOpenTasks{
+    closedTasks: number;
+    responsible : Employee;
 }

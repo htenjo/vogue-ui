@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../model/task';
-import { ReportTasksClosedInLastYear} from '../model/report';
+import {ReportTasksClosedInLastYear, ReportTasksOpenByEmployee} from '../model/report';
 import { ListWrapper } from '../model/common';
 import { Headers, Http, RequestOptions, URLSearchParams, Response} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
@@ -12,6 +12,7 @@ const API_TASK_URI = "/task";
 const API_TASK_HOT_URI = "/closeToExpire";
 const API_TASK_REPORT_CLOSED_TASKS = "/reportClosedTasksInLastYear";
 const API_TASK_REPORT_OPEN_TASKS_BY_EVENT_TYPE = "/reportOpenTasksPerEventType";
+const API_TASK_REPORT_OPEN_TASKS_BY_EMPLOYEE = "/reportTasksByEmployee";
 
 @Injectable()
 export class TaskService {
@@ -19,6 +20,7 @@ export class TaskService {
     private taskHotEndPoint = API_SERVER_BASE_URL + API_TASK_URI + API_TASK_HOT_URI;
     private taskReportClosed = API_SERVER_BASE_URL + API_TASK_URI + API_TASK_REPORT_CLOSED_TASKS;
     private reportCreatedByEventType = API_SERVER_BASE_URL + API_TASK_URI + API_TASK_REPORT_OPEN_TASKS_BY_EVENT_TYPE;
+    private reportByEmployee = API_SERVER_BASE_URL + API_TASK_URI + API_TASK_REPORT_OPEN_TASKS_BY_EMPLOYEE;
 
     constructor(private http: Http) { }
 
@@ -97,6 +99,31 @@ export class TaskService {
      */
     reportOpenTasksByEventType() {
         return this.http.get(this.reportCreatedByEventType)
+            .map(response => response.json())
+            .catch(this.handleError);
+    }
+
+    /**
+     *
+     * @param itemsByPage
+     * @param requiredPage
+     * @param startDate
+     * @param endDate
+     * @returns {Observable<R>}
+     */
+    reportOpenTasksByEmployee(startDate:string,
+                              endDate:string,
+                              itemsByPage: number,
+                              requiredPage:number) : Observable<ListWrapper<ReportTasksOpenByEmployee>> {
+        let options = new RequestOptions();
+        let query = new URLSearchParams();
+        query.append("startDate", startDate);
+        query.append("endDate", endDate);
+        query.append("size", itemsByPage.toString());
+        query.append("page", requiredPage.toString());
+        options.search = query;
+
+        return this.http.get(this.reportByEmployee, options)
             .map(response => response.json())
             .catch(this.handleError);
     }

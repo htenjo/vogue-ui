@@ -5,7 +5,8 @@ import { Headers, Http, RequestOptions, URLSearchParams, Response} from '@angula
 import 'rxjs/add/operator/toPromise';
 import './rxjs-operators';
 import { Observable } from 'rxjs/Observable';
-import {ReportEventsCreatedByEventType} from "../model/report";
+import {ReportEventsCreatedByEventType, ReportEventsCreatedByArea} from "../model/report";
+import {ReportEventsCreatedBetween} from "../components/report_events_created_between/report_events_created_between.component";
 
 const API_SERVER_BASE_URL = "http://localhost:8080";
 const API_EVENT_URI = "/event";
@@ -14,6 +15,7 @@ const API_EVENT_HOT_URI = "/closeToExpire";
 const API_EVENT_REPORT_URI = "/report";
 const API_EVENT_REPORT_CREATED_BY_EVENT_TYPE = "/createdByEventType";
 const API_EVENT_REPORT_CREATED_BETWEEN = "/countCreated";
+const API_EVENT_REPORT_CREATED_BY_AREA = "/createdByArea";
 
 @Injectable()
 export class EventService {
@@ -22,6 +24,7 @@ export class EventService {
     private eventTypeEndPoint = API_SERVER_BASE_URL + API_EVENT_TYPE_URI;
     private reportCreatedByEventType = API_SERVER_BASE_URL + API_EVENT_URI + API_EVENT_REPORT_URI + API_EVENT_REPORT_CREATED_BY_EVENT_TYPE;
     private reportCreatedBetween = API_SERVER_BASE_URL + API_EVENT_URI + API_EVENT_REPORT_URI + API_EVENT_REPORT_CREATED_BETWEEN;
+    private reportCreatedByArea = API_SERVER_BASE_URL + API_EVENT_URI + API_EVENT_REPORT_URI + API_EVENT_REPORT_CREATED_BY_AREA;
 
     /**
      *
@@ -113,7 +116,7 @@ export class EventService {
      *
      * @returns {Observable<R>}
      */
-    reportEventsCreatedByEventType(startDate:string, endDate:string) {
+    reportEventsCreatedByEventType(startDate:string, endDate:string) : Observable<ReportEventsCreatedByEventType[]>{
         let options = new RequestOptions();
         let query = new URLSearchParams();
         query.append("startDate", startDate);
@@ -139,6 +142,31 @@ export class EventService {
         options.search = query;
 
         return this.http.get(this.reportCreatedBetween, options)
+            .map(response => response.json())
+            .catch(this.handleError);
+    }
+
+    /**
+     *
+     * @param startDate
+     * @param endDate
+     * @param itemsByPage
+     * @param requiredPage
+     * @returns {Observable<R>}
+     */
+    reportEventsCreatedByArea(startDate:string,
+                              endDate:string,
+                              itemsByPage:number,
+                              requiredPage:number) : Observable<ListWrapper<ReportEventsCreatedByArea>>{
+        let options = new RequestOptions();
+        let query = new URLSearchParams();
+        query.append("startDate", startDate);
+        query.append("endDate", endDate);
+        query.append("size", itemsByPage.toString());
+        query.append("page", requiredPage.toString());
+        options.search = query;
+
+        return this.http.get(this.reportCreatedByArea, options)
             .map(response => response.json())
             .catch(this.handleError);
     }

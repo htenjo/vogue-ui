@@ -1,0 +1,40 @@
+<div class="report_wrapper">
+    <h4>Reporte: Eventos creados x Area</h4>
+
+    <table class="table table-hover table_list">
+        <thead>
+        <tr>
+            <th>Area</th>
+            <th>#Eventos Creados</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td width="60%">
+                <input [(ngModel)]="startDate" type="text" placeholder="Fecha inicial" class="form-control"/>
+            </td>
+            <td>
+                <input [(ngModel)]="endDate" type="text" placeholder="Fecha final" class="form-control"/>
+            </td>
+        </tr>
+        <tr *ngFor="let info of reportInfo">
+            <td class="td_left">{{info.area.name}}</td>
+            <td>{{info.createdEvents}}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <div class="table_list_pager" *ngIf="totalPages > 1">
+                        <button (click)="beforePage()" class="btn btn-secondary btn-xs"> < </button>
+                        Page {{currentPage}} of {{totalPages}}
+                        <button (click)="nextPage()" class="btn btn-secondary btn-xs"> > </button>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <div>
+        <button (click)="update()" type="submit" class="btn btn-primary">Actualizar</button>
+    </div>
+</div>

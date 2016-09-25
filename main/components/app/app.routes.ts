@@ -13,8 +13,11 @@ const routes: RouterConfig = [
         path: 'dashboard',
         component: DashBoardComponent
     },
-    {   path: 'events', 
+    {   path: 'events',
         component: EventListComponent 
+    },
+    {   path: 'tasks',
+        component: EventListComponent
     }
 ];
 

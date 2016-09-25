@@ -1,0 +1,37 @@
+.table_list{
+    font-size: 0.9em;
+}
+
+.table_list th{
+    text-align: center;
+}
+
+.table_list td{
+    vertical-align: middle;
+}
+
+.table_list .task_id{
+    width: 10%;
+}
+
+.table_list .task_date{
+    width: 10%;
+}
+
+.table_list .task_percentage{
+    width: 10%;
+}
+
+.table_list .task_desc{
+    width: 50%;
+    text-transform: lowercase;
+    text-align: justify;
+}
+
+.table_list .task_desc:first-letter{
+    text-transform: uppercase;
+}
+
+.table_list_pager{
+    font-size: 0.9em;
+}

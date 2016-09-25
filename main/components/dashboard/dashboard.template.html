@@ -3,12 +3,41 @@
 
     <div class="row statistics_box">
         <div class="col-lg-2"></div>
+
+        <div class="col-lg-4">
+            <report-events-by-type></report-events-by-type>
+        </div>
+        <div class="col-lg-4">
+            <report-open-tasks-by-event-type></report-open-tasks-by-event-type>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+
+    <div class="row statistics_box">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-4">
+            <report-events-created-between></report-events-created-between>
+        </div>
+        <div class="col-lg-4">
+
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+
+
+
+    <div class="row statistics_box">
+        <div class="col-lg-2"></div>
+        <!--
         <div class="col-lg-4">
             <db-hot-event></db-hot-event>
             <a [routerLink]="['/events']">View all events</a>
             <router-outlet></router-outlet>
         </div>
-        <div class="col-lg-4">
+        -->
+
+        <div class="col-lg-8">
             <db-hot-task></db-hot-task>
             <a [routerLink]="['/events']">View all tasks... (pending routing)</a>
         </div>

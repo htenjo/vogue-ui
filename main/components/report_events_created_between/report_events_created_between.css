@@ -1,0 +1,20 @@
+.table_list{
+    font-size: 0.9em;
+}
+
+.table_list th{
+    text-align: center;
+}
+
+.table_list td{
+    vertical-align: middle;
+    font-size: 5em;
+}
+
+.report_wrapper{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-style: dashed;
+    border-color: darkgray;
+}

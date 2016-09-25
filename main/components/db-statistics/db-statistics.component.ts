@@ -1,7 +1,6 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {TaskService} from "../../services/task-service";
 import {ReportTasksClosedInLastYear} from "../../model/report";
-import {Observable} from "rxjs";
 
 
 @Component({

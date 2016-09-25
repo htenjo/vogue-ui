@@ -11,12 +11,14 @@ const API_SERVER_BASE_URL = "http://localhost:8080";
 const API_TASK_URI = "/task";
 const API_TASK_HOT_URI = "/closeToExpire";
 const API_TASK_REPORT_CLOSED_TASKS = "/reportClosedTasksInLastYear";
+const API_TASK_REPORT_OPEN_TASKS_BY_EVENT_TYPE = "/reportOpenTasksPerEventType";
 
 @Injectable()
 export class TaskService {
     private taskEndPoint = API_SERVER_BASE_URL + API_TASK_URI;
     private taskHotEndPoint = API_SERVER_BASE_URL + API_TASK_URI + API_TASK_HOT_URI;
     private taskReportClosed = API_SERVER_BASE_URL + API_TASK_URI + API_TASK_REPORT_CLOSED_TASKS;
+    private reportCreatedByEventType = API_SERVER_BASE_URL + API_TASK_URI + API_TASK_REPORT_OPEN_TASKS_BY_EVENT_TYPE;
 
     constructor(private http: Http) { }
 
@@ -85,6 +87,16 @@ export class TaskService {
      */
     reportClosedTasksInLastYear() : Observable<ReportTasksClosedInLastYear>{
         return this.http.get(this.taskReportClosed)
+            .map(response => response.json())
+            .catch(this.handleError);
+    }
+
+    /**
+     *
+     * @returns {Observable<R>}
+     */
+    reportOpenTasksByEventType() {
+        return this.http.get(this.reportCreatedByEventType)
             .map(response => response.json())
             .catch(this.handleError);
     }

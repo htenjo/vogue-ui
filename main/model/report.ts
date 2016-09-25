@@ -4,8 +4,17 @@
 
 export interface ReportTasksClosedInLastYear{
     openTasks: number;
-    totalTasks : number;
-
+    totalTasks? : number;
     startDate: string;
     endDate: string;
+}
+
+export interface ReportEventsCreatedByEventType{
+    eventType : string;
+    createdEvents : number;
+}
+
+export interface ReportOpenTasksByEventType{
+    type : string;
+    openTasks : number;
 }

@@ -6,43 +6,43 @@
             <div class="col-lg-3">
                 <div class="panel panel-primary statistics_box">
                     <div class="panel-heading">
-                        Tareas Cerradas
+                        Total Tasks
                     </div>
                     <div class="panel-body">
-                        <h1 data-toggle="tooltip" data-placement="right" title="Tooltip on right">
+                        <h1 *ngIf="reportClosedTask">{{ reportClosedTask.totalTasks }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="panel panel-primary statistics_box">
+                    <div class="panel-heading">
+                        Open Tasks
+                    </div>
+                    <div class="panel-body">
+                        <h1 *ngIf="reportClosedTask">{{ reportClosedTask.openTasks }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="panel panel-primary statistics_box">
+                    <div class="panel-heading">
+                        % Tareas Cerradas
+                    </div>
+                    <div class="panel-body">
+                        <h1 data-toggle="tooltip" data-placement="right" *ngIf="reportClosedTask"
+                            title="{{ reportClosedTask.startDate }} / {{ reportClosedTask.endDate }}">
                             {{percentage | percent:'.1-1'}}
                         </h1>
-                        <span class="small-footer-text">2015-09-01 2016-09-30</span>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="panel panel-primary statistics_box">
                     <div class="panel-heading">
-                        Tareas Cerradas
+                        ?
                     </div>
                     <div class="panel-body">
-                        <h1>12%</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="panel panel-primary statistics_box">
-                    <div class="panel-heading">
-                        Relación Eventos
-                    </div>
-                    <div class="panel-body">
-                        <h1>40/120</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="panel panel-primary statistics_box">
-                    <div class="panel-heading">
-                        Relación Tareas
-                    </div>
-                    <div class="panel-body">
-                        <h1>40/120</h1>
+                        <h1>%</h1>
                     </div>
                 </div>
             </div>

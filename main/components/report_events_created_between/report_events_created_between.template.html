@@ -1,0 +1,23 @@
+<div class="report_wrapper">
+    <h4>Reporte: Eventos creados en el periodo</h4>
+
+    <table class="table table-hover table_list">
+        <tbody>
+        <tr>
+            <td>
+                <input [(ngModel)]="startDate" type="text" placeholder="Fecha inicial" class="form-control"/>
+            </td>
+            <td>
+                <input [(ngModel)]="endDate" type="text" placeholder="Fecha final" class="form-control"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="td_left" colspan="2">{{createdEvents}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <button (click)="update()" type="submit" class="btn btn-primary">Actualizar</button>
+    </div>
+</div>

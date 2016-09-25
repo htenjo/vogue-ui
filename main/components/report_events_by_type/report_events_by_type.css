@@ -24,4 +24,7 @@
 .report_wrapper{
     margin-top: 20px;
     margin-bottom: 20px;
+    padding: 10px;
+    border-style: dashed;
+    border-color: darkgray;
 }

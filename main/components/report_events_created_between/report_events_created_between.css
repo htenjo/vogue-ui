@@ -8,19 +8,9 @@
 
 .table_list td{
     vertical-align: middle;
+    font-size: 5em;
 }
 
-.table_list .td_left{
-    text-align: left;
-    padding-right: 10px;
-    width: 70px;
-}
-
-.table_list_options{
-    float: right;
-    display: inline;
-    /*vertical-align: bottom;*/
-}
 .report_wrapper{
     margin-top: 20px;
     margin-bottom: 20px;

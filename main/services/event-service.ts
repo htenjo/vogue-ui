@@ -13,6 +13,7 @@ const API_EVENT_TYPE_URI = "/utils/reportTypes";
 const API_EVENT_HOT_URI = "/closeToExpire";
 const API_EVENT_REPORT_URI = "/report";
 const API_EVENT_REPORT_CREATED_BY_EVENT_TYPE = "/createdByEventType";
+const API_EVENT_REPORT_CREATED_BETWEEN = "/countCreated";
 
 @Injectable()
 export class EventService {
@@ -20,6 +21,7 @@ export class EventService {
     private eventHotEndPoint = API_SERVER_BASE_URL + API_EVENT_URI + API_EVENT_HOT_URI;
     private eventTypeEndPoint = API_SERVER_BASE_URL + API_EVENT_TYPE_URI;
     private reportCreatedByEventType = API_SERVER_BASE_URL + API_EVENT_URI + API_EVENT_REPORT_URI + API_EVENT_REPORT_CREATED_BY_EVENT_TYPE;
+    private reportCreatedBetween = API_SERVER_BASE_URL + API_EVENT_URI + API_EVENT_REPORT_URI + API_EVENT_REPORT_CREATED_BETWEEN;
 
     /**
      *
@@ -119,6 +121,24 @@ export class EventService {
         options.search = query;
 
         return this.http.get(this.reportCreatedByEventType, options)
+            .map(response => response.json())
+            .catch(this.handleError);
+    }
+
+    /**
+     *
+     * @param startDate
+     * @param endDate
+     * @returns {Observable<R>}
+     */
+    reportEventsCreatedBetween(startDate:string, endDate:string){
+        let options = new RequestOptions();
+        let query = new URLSearchParams();
+        query.append("startDate", startDate);
+        query.append("endDate", endDate);
+        options.search = query;
+
+        return this.http.get(this.reportCreatedBetween, options)
             .map(response => response.json())
             .catch(this.handleError);
     }

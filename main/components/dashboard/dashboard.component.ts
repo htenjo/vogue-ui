@@ -8,6 +8,7 @@ import {ReportEventsByType} from "../report_events_by_type/report_events_by_type
 import {ReportOpenTaskByEventType} from "../report-open-tasks-by-event-type/report-open-tasks-by-event-type.component";
 import {ReportEventsCreatedBetween} from "../report_events_created_between/report_events_created_between.component";
 import {ReportEventsByArea} from "../report_events_by_area/report_events_by_area.component";
+import {ReportOpenTasksByEmployee} from "../report_open_tasks_by_employee/report_open_tasks_by_employee.component";
 
 @Component({
     selector: "vogue-dashboard",
@@ -15,7 +16,7 @@ import {ReportEventsByArea} from "../report_events_by_area/report_events_by_area
     directives: [EventListComponent, DashboardStatistics,
         ReportEventsByType, ReportOpenTaskByEventType,
         ReportEventsCreatedBetween, ReportEventsByArea,
-        DashboardHotEvent,
+        DashboardHotEvent, ReportOpenTasksByEmployee,
         DashboardHotTask, ROUTER_DIRECTIVES],
     moduleId: module.id
 })
